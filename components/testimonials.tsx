@@ -74,30 +74,33 @@ const Testimonials = () => (
   </div>
 )
 
-const TestimonialList = () =>
-  testimonials.map((testimonial) => (
-    <div key={testimonial.id} className="min-w-96 max-w-sm bg-accent rounded-xl p-6">
-      <div className="flex items-center justify-between">
-        <div className="flex items-center gap-4">
-          <Avatar>
-            <AvatarFallback className="text-xl font-medium bg-primary text-primary-foreground">
-              {testimonial.name.charAt(0)}
-            </AvatarFallback>
-          </Avatar>
-          <div>
-            <p className="text-lg font-semibold">{testimonial.name}</p>
-            <p className="text-sm text-gray-500">{testimonial.designation}</p>
+const TestimonialList = () => (
+  <>
+    {testimonials.map((testimonial) => (
+      <div key={testimonial.id} className="min-w-96 max-w-sm bg-accent rounded-xl p-6">
+        <div className="flex items-center justify-between">
+          <div className="flex items-center gap-4">
+            <Avatar>
+              <AvatarFallback className="text-xl font-medium bg-primary text-primary-foreground">
+                {testimonial.name.charAt(0)}
+              </AvatarFallback>
+            </Avatar>
+            <div>
+              <p className="text-lg font-semibold">{testimonial.name}</p>
+              <p className="text-sm text-gray-500">{testimonial.designation}</p>
+            </div>
           </div>
+          <Button variant="ghost" size="icon" asChild>
+            <Link href="#" target="_blank">
+              <TwitterLogo className="w-4 h-4" />
+            </Link>
+          </Button>
         </div>
-        <Button variant="ghost" size="icon" asChild>
-          <Link href="#" target="_blank">
-            <TwitterLogo className="w-4 h-4" />
-          </Link>
-        </Button>
+        <p className="mt-5 text-[17px]">{testimonial.testimonial}</p>
       </div>
-      <p className="mt-5 text-[17px]">{testimonial.testimonial}</p>
-    </div>
-  ))
+    ))}
+  </>
+)
 
 const TwitterLogo = (props: ComponentProps<"svg">) => (
   <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" {...props}>
